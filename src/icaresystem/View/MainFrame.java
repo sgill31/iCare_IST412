@@ -6,7 +6,6 @@
 package icaresystem.View;
 
 import javax.swing.*;  
-import icaresystem.View.MainPanel;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;  
 
@@ -16,7 +15,6 @@ import java.awt.FlowLayout;
  */
 public class MainFrame {
     private JFrame frame;
-    private MainPanel panel;
     private HomePanel home;
     private AccountPanel account;
     private AppointmentPanel appointment;
@@ -24,7 +22,10 @@ public class MainFrame {
     private InsurancePanel insurance;
     private PrescriptionPanel prescription;
     private JTabbedPane tab;
+    
+    
     public MainFrame(String title) {
+       
         frame = new JFrame(title);
         tab = new JTabbedPane();
         
@@ -36,36 +37,31 @@ public class MainFrame {
         insurance = new InsurancePanel();
         prescription = new PrescriptionPanel();
         
+        // list of panels
+        String[] listOfPanels = new String[] {"Home", "Account", "Appointment", "History", "Insurance", "Prescription"};
+        JPanel[] panels = new JPanel[]{home, account, appointment, history, insurance, prescription};
+        
         // add panels
-        tab.addTab("Home", home);
-        tab.addTab("Account", account);
-        tab.addTab("Appointment", appointment);
-        tab.addTab("History", history);
-        tab.addTab("Insurance", insurance);
-        tab.addTab("Prescription", prescription);
-        
-        tab.setEnabledAt(1, false);
-        tab.setEnabledAt(2, false);
-        tab.setEnabledAt(3, false);
-        tab.setEnabledAt(4, false);
-        tab.setEnabledAt(5, false);
-        
+        for(int i = 0; i < panels.length; i++) {
+            tab.addTab(listOfPanels[i], panels[i]);
+        }
+         
+        for(int i = 1; i <= 5; i++) {
+            tab.setEnabledAt(i, false);
+        }
 
         frame.getContentPane().add(tab);
         frame.setSize(1280, 720);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
         frame.setVisible(true);
-        
-        
+   
     }
  
     public void enableTabs(boolean loggedOn) {
-        getTab().setEnabledAt(1, loggedOn);
-        getTab().setEnabledAt(2, loggedOn);
-        getTab().setEnabledAt(3, loggedOn);
-        getTab().setEnabledAt(4, loggedOn);
-        getTab().setEnabledAt(5, loggedOn);
-        
+        for(int i = 1; i <= 5; i++) {
+            getTab().setEnabledAt(i, loggedOn);
+        }
+       
     }
     /**
      * @return the frame
@@ -79,20 +75,6 @@ public class MainFrame {
      */
     public void setFrame(JFrame frame) {
         this.frame = frame;
-    }
-
-    /**
-     * @return the panel
-     */
-    public MainPanel getPanel() {
-        return panel;
-    }
-
-    /**
-     * @param panel the panel to set
-     */
-    public void setPanel(MainPanel panel) {
-        this.panel = panel;
     }
 
     /**

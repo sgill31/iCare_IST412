@@ -30,7 +30,7 @@ public class MainController {
         }
         
         
-        
+        // make new account
         frame.getAccount().getSubmitButton().addActionListener(new ActionListener() { 
             public void actionPerformed(ActionEvent e) { 
                 String text = "'" + frame.getAccount().getField().getText() + "'";
@@ -46,6 +46,7 @@ public class MainController {
             }
         }); 
         
+        // authenticate id and password from database
         frame.getHome().getSubmit().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String pwd = String.valueOf(frame.getHome().getPassword().getPassword());
@@ -64,6 +65,7 @@ public class MainController {
             }
         });
         
+        // make new appointment
         frame.getAppointment().getSubmitButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

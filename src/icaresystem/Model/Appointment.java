@@ -11,21 +11,16 @@ package icaresystem.Model;
  *
  * @author ericgutierrez
  */
-public class Appointment implements AppointmentCommand{
+public class Appointment {
     
     private int appointment;
-    private Patient patient;
+    private Account patient;
     private String appointmentDescription;
     
-    public Appointment(int App, Patient inPatient, String inDesc) {
+    public Appointment(int App, Account inPatient, String inDesc) {
         this.appointment = App;
         this.patient = inPatient;
         this.appointmentDescription = inDesc;
-    }
-    void requestCheckup(){
-          /**
-     * method to request checkup from appointment
-     */  
     }
 
     public int getAppointment() {
@@ -36,11 +31,11 @@ public class Appointment implements AppointmentCommand{
         this.appointment = appointment;
     }
 
-    public Patient getPatient() {
+    public Account getPatient() {
         return patient;
     }
 
-    public void setPatient(Patient patient) {
+    public void setPatient(Account patient) {
         this.patient = patient;
     }
 
@@ -51,24 +46,5 @@ public class Appointment implements AppointmentCommand{
     public void setAppointmentDescription(String appointmentDescription) {
         this.appointmentDescription = appointmentDescription;
     }
-
-    @Override
-    public void newAppoinment() {
-        
-        //set Command to create a new appoinment based on Appointment combo box index
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void undoAppoinment() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void loadAppointment() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    
-    
+  
 }

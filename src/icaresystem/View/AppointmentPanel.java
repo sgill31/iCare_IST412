@@ -27,39 +27,9 @@ public class AppointmentPanel extends JPanel {
     public AppointmentPanel() {
         fl = new FlowLayout();
         setLayout(fl);
-        
-        comboBoxA = new JComboBox();
-        comboBoxA.addItem("New Appointment");
-        comboBoxA.addItem("View Appointment");
-        comboBoxA.addItem("Edit Appointment");
-        this.add(comboBoxA);
-        
-        labelA = new JLabel(" with condition?");
-        this.add(labelA);
-        
-        comboBoxB = new JComboBox();
-        comboBoxB.addItem("Patient");
-        comboBoxB.addItem("Medical Staff");
-        comboBoxB.addItem("Administration");
-        this.add(comboBoxB);
-        
-        comboBoxC = new JComboBox();
-        comboBoxC.addItem("is");
-        comboBoxC.addItem("not");
-        comboBoxC.addItem("with");
-        this.add(comboBoxC);
-        
-        comboBoxD = new JComboBox();
-        comboBoxD.addItem("ICare ");
-        comboBoxD.addItem("3rd Party");
-        comboBoxD.addItem("New Entry");
-        this.add(comboBoxD);
-        
-        submitButton = new JButton("Submit");
-        this.add(submitButton);
-       
+        initializeComboBoxes();    
     }
-
+ 
     /**
      * @return the comboBoxA
      */
@@ -128,6 +98,44 @@ public class AppointmentPanel extends JPanel {
      */
     public void setSubmitButton(JButton buttonA) {
         this.submitButton = buttonA;
+    }
+
+    private void initializeComboBoxes() {
+        String[] comBoxA = new String[] {"New Appointment", "View Appointment", "Edit Appointment"};
+        String[] comBoxB = new String[] {"Patient", "Medical Staff", "Adminstration"};
+        String[] comBoxC = new String[] {"is", "not", "with"};
+        String[] comBoxD = new String[] {"iCare", "3rd Party", "New Entry"};
+        
+        comboBoxA = new JComboBox();
+        comboBoxB = new JComboBox();
+        comboBoxC = new JComboBox();
+        comboBoxD = new JComboBox();
+        
+        for(String str : comBoxA) {
+            comboBoxA.addItem(str);
+        }
+        
+        for(String str : comBoxB) {
+            comboBoxB.addItem(str);
+        }
+        
+        for(String str : comBoxC) {
+            comboBoxC.addItem(str);
+        }
+        
+        for(String str : comBoxD) {
+            comboBoxD.addItem(str);
+        }
+     
+        this.add(comboBoxA);
+        labelA = new JLabel(" with condition?");
+        this.add(labelA);
+        this.add(comboBoxB);
+        this.add(comboBoxC);
+        this.add(comboBoxD);
+        
+        submitButton = new JButton("Submit");
+        this.add(submitButton);
     }
 
 }

@@ -73,8 +73,8 @@ public class AppointmentTest {
     public void testGetPatient() {
         System.out.println("getPatient");
         Appointment instance = new Appointment();
-        Patient expResult = null;
-        Patient result = instance.getPatient();
+        Account expResult = null;
+        Account result = instance.getPatient();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -86,7 +86,7 @@ public class AppointmentTest {
     @Test
     public void testSetPatient() {
         System.out.println("setPatient");
-        Patient patient = null;
+        Account patient = null;
         Appointment instance = new Appointment();
         instance.setPatient(patient);
         // TODO review the generated test code and remove the default call to fail.

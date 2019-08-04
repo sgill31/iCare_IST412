@@ -7,7 +7,6 @@ package TestHarness;
 
 import icaresystem.View.MainFrame;
 import icaresystem.Model.Account;
-import icaresystem.Model.Patient;
 import icaresystem.Controller.*;
 /**
  *

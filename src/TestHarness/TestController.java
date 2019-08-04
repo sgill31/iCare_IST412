@@ -56,10 +56,8 @@ public class TestController {
             testView.getTestFeedbackPane().setText("");
             AccountClassTests();
             AppointmentClassTests();
-            CustomerClassTests();
             HistoryClassTests();
             InsuranceClassTests();
-            PatientClassTests();
             PrescriptionClassTests();
             RecordClassTests();
             RegistrationClassTests();
@@ -312,7 +310,7 @@ public class TestController {
         
     //Constructor tests
     final int appointment = 1;
-    final Patient patient = new Patient(patientId, firstName, lastName, age, height, emailAddress, address);
+    final Account patient = new Account(patientId, firstName, lastName, age, height, emailAddress, address);
     final String appointmentDescription = "new";
     Appointment testAppt = new Appointment(appointment, patient, appointmentDescription);
     Integer result = testAppt.getAppointment();
@@ -326,7 +324,7 @@ public class TestController {
         else{
             PrintTestResult("Account Constructor Test",expectedResult.toString(), result.toString(), FALSE);
         }
-       Patient p_Result = testAppt.getPatient();
+       Account p_Result = testAppt.getPatient();
        String p_ExpectedResult = "Harry";
        String p_name = p_Result.getFirstName();
       
@@ -342,47 +340,7 @@ public class TestController {
     
     }
     
-    /**
-     *
-     */
-    public void CustomerClassTests(){
-        String testMsg = testView.getTestFeedbackPane().getText();
-        testView.getTestFeedbackPane().setText(testMsg + "\nBeginning Customer class tests");
-        
-        //TODO: CREATE CUSTOMER CLASS TESTS HERE
-        final String id = "id";
-        final long register_id = 12334;
-        Customer customerTest = new Customer(id, register_id);
-        String t_id = customerTest.getId();
-        long t_register = customerTest.getRegister_id();
-        
-       String id_Result = customerTest.getId();
-       String id_ExpectedResult = "id";
-       
-      
-        if (id.compareTo(customerTest.getId()) == 0){
-            PrintTestResult("Customer Id Test", id_ExpectedResult.toString(), id_Result.toString(), TRUE);
-        }
-        else{
-            PrintTestResult("Customer Id Test",id_ExpectedResult.toString(), id_Result.toString(), FALSE);
-        }
-        long t_register_result = customerTest.getRegister_id();
-        long t_register_expected = 12334;
-        if (t_register_result==customerTest.getRegister_id()){
-            PrintTestResult("Customer Register ID Test", t_register_result + "", t_register_expected+"", TRUE);
-        }
-        else{
-            PrintTestResult("Customer Register ID Test", t_register_result + "", t_register_expected+"", FALSE);
-        }
-        
-        
-        testMsg = testView.getTestFeedbackPane().getText();
-        testView.getTestFeedbackPane().setText(testMsg + "end customer class tests");
-    }
-    
-    /**
-     *
-     */
+
     public void HistoryClassTests(){
     String testMsg = testView.getTestFeedbackPane().getText();
     testView.getTestFeedbackPane().setText(testMsg + "\nBeginning history class tests");
@@ -454,201 +412,6 @@ public class TestController {
     
     }
     
-    /**
-     *
-     */
-    public void PatientClassTests(){
-    String testMsg = testView.getTestFeedbackPane().getText();
-        testView.getTestFeedbackPane().setText(testMsg + "\nBeginning patient class tests");
-        
-        //Constructor Test
-        String firstName = "first";
-        String lastName = "last";
-        int age = 12;
-        double height = 6.1;
-        String emailAddress = "last@psu.edu";
-        String address = "123 Birch St";
-        int patientId = 8;
-        
-        Patient testPatient = new Patient(patientId, firstName, lastName, age, height, emailAddress, address);
-        String result = testPatient.getPatientFullDetails();
-        String expResult = "Name: " + firstName + " " + lastName + "\n" + "Age: " + age + "\n" + "Height: " + height + "\n" + "Email Address: " + emailAddress  + 
-                "\n" + "Address: " + address;
-        
-        int testStatus = result.compareTo(expResult);
-        
-        if (testStatus == 0){
-            PrintTestResult("Patient Constructor Test",expResult, result, TRUE);
-        }
-        else{
-            PrintTestResult("Patient Constructor Test",expResult, result, FALSE);
-        }
-        
-        //getPatientFullName() Test
-        expResult = firstName + " " + lastName;
-        result = testPatient.getPatientFullName();
-        if(expResult.compareTo(result) == 0)
-        {
-            PrintTestResult("Get Patient full name test", expResult, result, TRUE);
-        }
-        else{
-            PrintTestResult("Get Patient full name test", expResult, result, FALSE);
-        }
-        
-        //getFirstName() Test
-        expResult = firstName;
-        result = testPatient.getFirstName();
-        if(expResult.compareTo(result) == 0)
-        {
-            PrintTestResult("Get first name test", expResult, result, TRUE);
-        }
-        else{
-            PrintTestResult("Get first name test", expResult, result, FALSE);
-        }
-        
-        //setFirstName() Test
-        String newFirstName = "New";
-        testPatient.setFirstName(newFirstName);
-        result = testPatient.getFirstName();
-        expResult = newFirstName; 
-        if(expResult.compareTo(result) == 0)
-        {
-            PrintTestResult("Set Patient first name test", expResult, result, TRUE);
-        }
-        else{
-            PrintTestResult("Set Patient first name test", expResult, result, FALSE);
-        }
-        testPatient.setFirstName(firstName);
-        
-        //getLastName() Test
-        expResult = lastName;
-        result = testPatient.getLastName();
-        if(expResult.compareTo(result) == 0)
-        {
-            PrintTestResult("Get last name test", expResult, result, TRUE);
-        }
-        else{
-            PrintTestResult("Get last name test", expResult, result, FALSE);
-        }
-        
-        //setLastName() Test
-        String newLastName = "New";
-        testPatient.setLastName(newLastName);
-        result = testPatient.getLastName();
-        expResult = newLastName; 
-        if(expResult.compareTo(result) == 0)
-        {
-            PrintTestResult("Set Patient last name test", expResult, result, TRUE);
-        }
-        else{
-            PrintTestResult("Set Patient last name test", expResult, result, FALSE);
-        }
-        testPatient.setLastName(lastName);
-        
-        
-        //getAge() Test
-        expResult = Integer.toString(age);
-        result = Integer.toString(testPatient.getAge());
-        if(expResult.compareTo(result) == 0)
-        {
-            PrintTestResult("Get age test", expResult, result, TRUE);
-        }
-        else{
-            PrintTestResult("Get age test", expResult, result, FALSE);
-        }
-        
-        //setAge() Test
-        int newAge = 88;
-        testPatient.setAge(newAge);
-        result = Integer.toString(testPatient.getAge());
-        expResult = Integer.toString(newAge); 
-        if(expResult.compareTo(result) == 0)
-        {
-            PrintTestResult("Set Patient age test", expResult, result, TRUE);
-        }
-        else{
-            PrintTestResult("Set Patient age test", expResult, result, FALSE);
-        }
-        testPatient.setAge(age);
-        
-        //getHeight() Test
-        expResult = Double.toString(height);
-        result = Double.toString(testPatient.getHeight());
-        if(expResult.compareTo(result) == 0)
-        {
-            PrintTestResult("Get height test", expResult, result, TRUE);
-        }
-        else{
-            PrintTestResult("Get height test", expResult, result, FALSE);
-        }
-        
-        //setHeight() Test
-        Double newHeight = 3.5;
-        testPatient.setHeight(newHeight);
-        result = Double.toString(testPatient.getHeight());
-        expResult = Double.toString(newHeight); 
-        if(expResult.compareTo(result) == 0)
-        {
-            PrintTestResult("Set height test", expResult, result, TRUE);
-        }
-        else{
-            PrintTestResult("Set height test", expResult, result, FALSE);
-        }
-        testPatient.setHeight(height);
-        
-        //getEmail Test
-        expResult = emailAddress;
-        result = testPatient.getEmailAddress();
-        if(expResult.compareTo(result) == 0)
-        {
-            PrintTestResult("Get email test", expResult, result, TRUE);
-        }
-        else{
-            PrintTestResult("Get email test", expResult, result, FALSE);
-        }
-        
-        //setFirstName() Test
-        String newEmail = "New@email.com";
-        testPatient.setEmailAddress(newEmail);
-        result = testPatient.getEmailAddress();
-        expResult = newEmail; 
-        if(expResult.compareTo(result) == 0)
-        {
-            PrintTestResult("Set email test", expResult, result, TRUE);
-        }
-        else{
-            PrintTestResult("Set email test", expResult, result, FALSE);
-        }
-        testPatient.setEmailAddress(emailAddress);
-        
-        //getAddress() Test
-        expResult = address;
-        result = testPatient.getAddress();
-        if(expResult.compareTo(result) == 0)
-        {
-            PrintTestResult("Get address test", expResult, result, TRUE);
-        }
-        else{
-            PrintTestResult("Get address test", expResult, result, FALSE);
-        }
-        
-        //setFirstName() Test
-        String newAddress = "New Address";
-        testPatient.setAddress(newAddress);
-        result = testPatient.getAddress();
-        expResult = newAddress; 
-        if(expResult.compareTo(result) == 0)
-        {
-            PrintTestResult("Set address test", expResult, result, TRUE);
-        }
-        else{
-            PrintTestResult("Set address test", expResult, result, FALSE);
-        }
-        testPatient.setAddress(address);
-        
-     testMsg = testView.getTestFeedbackPane().getText();
-     testView.getTestFeedbackPane().setText(testMsg + "End patient class tests");    
-    }
     
     /**
      *
@@ -667,7 +430,7 @@ public class TestController {
     int patientId = 8;
         
     String display = "Display";
-    Patient patient = new Patient(patientId, firstName, lastName, age, height, emailAddress, address);;
+    Account patient = new Account(patientId, firstName, lastName, age, height, emailAddress, address);;
     long RX = 8;
     
     Prescription testPrep = new Prescription(display, patient, RX);
@@ -701,8 +464,8 @@ public class TestController {
         testPrep.setDisplay(display);
         
         //getPatient Test
-        Patient expPatient = patient;
-        Patient patientResult = testPrep.getPatient();
+        Account expPatient = patient;
+        Account patientResult = testPrep.getPatient();
         if(expResult.compareTo(result) == 0)
         {
             PrintTestResult("Get patient test", expResult, result, TRUE);

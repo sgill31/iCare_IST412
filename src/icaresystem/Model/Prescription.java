@@ -12,10 +12,10 @@ package icaresystem.Model;
 public class Prescription {
     
     private String display;
-    private Patient patient;
+    private Account patient;
     private long RX;
 
-    public Prescription(String display, Patient patient, long RX) {
+    public Prescription(String display, Account patient, long RX) {
         this.display = display;
         this.patient = patient;
         this.RX = RX;
@@ -32,11 +32,11 @@ public class Prescription {
         this.display = display;
     }
 
-    public Patient getPatient() {
+    public Account getPatient() {
         return patient;
     }
 
-    public void setPatient(Patient patient) {
+    public void setPatient(Account patient) {
         this.patient = patient;
     }
 
